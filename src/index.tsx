@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ThemeProvider } from 'emotion-theming';
+import { Provider } from 'react-redux';
+import theme from './theme';
+import { store } from './features/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={{}}>
-      <App />
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
