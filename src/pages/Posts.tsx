@@ -7,11 +7,7 @@ import { Post } from '../features/posts/posts.model';
 import { RootState, Dispatch } from '../features/store';
 import { MapToList } from '../utils';
 import { User } from '../features/users/users.model';
-
-const Identity = ({ userId }: { userId: User['id'] }) => {
-  const user = useSelector((state: RootState) => state.users[userId]) || {};
-  return <Link to={`/user/${userId}`}>{user.name}</Link>;
-};
+import Identity from '../components/Identity';
 
 const PostPreview = ({ post }: { post: Post }) => {
   return (
