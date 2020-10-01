@@ -3,13 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/core": "^10.0.35",
     "@rematch/core": "^2.0.0-next.5",
+    "@theme-ui/color": "^0.3.1",
     "@types/jest": "^25.2.1",
     "@types/node": "^13.11.0",
     "@types/react": "^16.9.32",
     "@types/react-dom": "^16.9.6",
-    "emotion-theming": "^10.0.27",
     "ramda": "^0.27.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -17,6 +16,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "redux-logger": "^3.0.6",
+    "theme-ui": "^0.3.1",
     "typescript": "^3.9.3"
   },
   "scripts": {
@@ -41,10 +41,12 @@
     ]
   },
   "devDependencies": {
+    "@types/prettier": "^2.1.1",
     "@types/ramda": "^0.27.19",
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.5",
     "@types/redux-logger": "^3.0.8",
+    "@types/theme-ui": "^0.3.7",
     "prettier": "^2.1.2"
   }
 }
