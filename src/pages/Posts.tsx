@@ -2,7 +2,7 @@
 import { jsx } from '@emotion/core';
 
 const Posts = () => {
-  return <div></div>;
+  return <div>posts</div>;
 };
 
 export default Posts;
