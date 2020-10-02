@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from 'theme-ui';
+import { jsx, Card } from 'theme-ui';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -11,6 +11,22 @@ import { Comment } from '../features/comments/comments.model';
 interface ParamTypes {
   id: string;
 }
+
+type CommentProps = {
+  comment: Comment;
+};
+
+const CommentComponent = ({ comment }: CommentProps) => {
+  return (
+    <Card>
+      {comment.body}
+      <br />
+      {comment.email}
+      <br />
+      {comment.name}
+    </Card>
+  );
+};
 
 const Post = () => {
   const { id } = useParams<ParamTypes>();
@@ -24,14 +40,14 @@ const Post = () => {
   }, []);
 
   return (
-    <div>
+    <main sx={{ variant: 'styles.container', pt: 100 }}>
       <h1>{post.title}</h1>
       <p>{post.body}</p>
       <Identity userId={post.userId} />
       {comments.map((comment) => (
-        <div key={`comment-${comment.id}`}>{comment.body}</div>
+        <CommentComponent comment={comment} key={`comment-${comment.id}`} />
       ))}
-    </div>
+    </main>
   );
 };
 

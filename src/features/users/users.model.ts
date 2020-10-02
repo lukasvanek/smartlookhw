@@ -3,15 +3,34 @@ import { RootModel } from '../root.model';
 import assoc from 'ramda/es/assoc';
 import { getUser } from '../../api';
 
+export type Geo = {
+  lat: string;
+  lng: string;
+};
+
+export type Address = {
+  city: string;
+  geo: Geo;
+  street: string;
+  suite: string;
+  zipcode: string;
+};
+
+export type Company = {
+  bs: string;
+  catchPhrase: string;
+  name: string;
+};
+
 export type User = {
   id: string;
   name: string;
   phone: string;
   username: string;
   website: string;
-  address: any;
-  company: any;
   email: string;
+  address: Address;
+  company: Company;
 };
 
 export type UsersMap = {

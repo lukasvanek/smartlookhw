@@ -88,13 +88,16 @@ const theme = {
       display: 'flex',
       flexDirection: 'column',
     },
+    container: {
+      px: [3, 5],
+    },
     a: {
       color: 'text',
       textDecoration: 'none',
     },
     h1: {
       color: 'text',
-      fontFamily: '"Playfair Display", Georgia, serif',
+      fontFamily: 'heading',
       lineHeight: 'heading',
       fontWeight: 'heading',
       fontSize: 5,
@@ -111,15 +114,6 @@ const theme = {
       color: 'text',
       fontWeight: 'body',
       lineHeight: 'body',
-    },
-    articleText: {
-      fontFamily: '"Playfair Display", Georgia, serif',
-      letterSpacing: '0.01em',
-    },
-    commentText: {
-      backgroundColor: lighten('background', 0.05),
-      p: 3,
-      borderRadius: '18px',
     },
     img: {
       maxWidth: '100%',

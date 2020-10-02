@@ -8,8 +8,8 @@ import { Post } from '../posts/posts.model';
 export type Comment = {
   body: string;
   email: string;
-  id: number;
-  name: number;
+  id: string;
+  name: string;
   postId: Post['id'];
 };
 
