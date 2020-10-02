@@ -1,64 +1,33 @@
 /** @jsx jsx */
-import { jsx, Flex } from 'theme-ui';
+import { jsx, Flex, Box } from 'theme-ui';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { pics } from '../utils';
 import { RootState } from '../features/store';
 import { User } from '../features/users/users.model';
 import Avatar from './Avatar';
 
-export const pics = [
-  '26CFEFB3-21C8-49FC-8C19-8E6A62B6D2E0',
-  '1C4EEDC2-FE9C-40B3-A2C9-A038873EE692',
-  '03F55412-DE8A-4F83-AAA6-D67EE5CE48DA',
-  '344CFC24-61FB-426C-B3D1-CAD5BCBD3209',
-  '2DDDE973-40EC-4004-ABC0-73FD4CD6D042',
-  'AEF44435-B547-4B84-A2AE-887DFAEE6DDF',
-  '282A12CA-E0D7-4011-8BDD-1FAFAAB035F7',
-  'FBEBF655-4886-455A-A4A4-D62B77DD419B',
-  'E0B4CAB3-F491-4322-BEF2-208B46748D4A',
-  'B3CF5288-34B0-4A5E-9877-5965522529D6',
-  'BA0CB1F2-8C79-4376-B13B-DD5FB8772537',
-  'A7299C8E-CEFC-47D9-939A-3C8CA0EA4D13',
-  '852EC6E1-347C-4187-9D42-DF264CCF17BF',
-  '26CFEFB3-21C8-49FC-8C19-8E6A62B6D2E0',
-  '1C4EEDC2-FE9C-40B3-A2C9-A038873EE692',
-  '03F55412-DE8A-4F83-AAA6-D67EE5CE48DA',
-  '344CFC24-61FB-426C-B3D1-CAD5BCBD3209',
-  '2DDDE973-40EC-4004-ABC0-73FD4CD6D042',
-  'AEF44435-B547-4B84-A2AE-887DFAEE6DDF',
-  '282A12CA-E0D7-4011-8BDD-1FAFAAB035F7',
-  'FBEBF655-4886-455A-A4A4-D62B77DD419B',
-  'E0B4CAB3-F491-4322-BEF2-208B46748D4A',
-  'B3CF5288-34B0-4A5E-9877-5965522529D6',
-  'BA0CB1F2-8C79-4376-B13B-DD5FB8772537',
-  'A7299C8E-CEFC-47D9-939A-3C8CA0EA4D13',
-  '852EC6E1-347C-4187-9D42-DF264CCF17BF',
-  '26CFEFB3-21C8-49FC-8C19-8E6A62B6D2E0',
-  '1C4EEDC2-FE9C-40B3-A2C9-A038873EE692',
-  '03F55412-DE8A-4F83-AAA6-D67EE5CE48DA',
-  '344CFC24-61FB-426C-B3D1-CAD5BCBD3209',
-  '2DDDE973-40EC-4004-ABC0-73FD4CD6D042',
-  'AEF44435-B547-4B84-A2AE-887DFAEE6DDF',
-  '282A12CA-E0D7-4011-8BDD-1FAFAAB035F7',
-  'FBEBF655-4886-455A-A4A4-D62B77DD419B',
-  'E0B4CAB3-F491-4322-BEF2-208B46748D4A',
-  'B3CF5288-34B0-4A5E-9877-5965522529D6',
-  'BA0CB1F2-8C79-4376-B13B-DD5FB8772537',
-  'A7299C8E-CEFC-47D9-939A-3C8CA0EA4D13',
-  '852EC6E1-347C-4187-9D42-DF264CCF17BF',
-];
+type IdentityProps = {
+  userId: User['id'];
+};
 
-const Identity = ({ userId }: { userId: User['id'] }) => {
+const Identity = ({ userId }: IdentityProps) => {
   const user = useSelector((state: RootState) => state.users[userId]) || {};
   return (
-    <Flex>
-      <Avatar
-        src={`https://tinyfac.es/data/avatars/${
-          pics[Number(userId)]
-        }-200w.jpeg`}
-      />
-      <Link to={`/user/${userId}`}>{user.name}</Link>
-    </Flex>
+    <Link to={`/user/${userId}`}>
+      <Flex sx={{ alignItems: 'center' }}>
+        <Box sx={{ mr: 2, height: 32 }}>
+          <Avatar
+            size={32}
+            src={`https://tinyfac.es/data/avatars/${
+              pics[Number(userId)]
+            }-200w.jpeg`}
+          />
+        </Box>
+
+        <Box>{user.name}</Box>
+      </Flex>
+    </Link>
   );
 };
 

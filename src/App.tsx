@@ -1,11 +1,17 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from 'react-router-dom';
 import Post from './pages/Post';
 import Posts from './pages/Posts';
 import User from './pages/User';
 import Header from './components/Header';
 import ScrollIntoView from './components/ScrollIntoView';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -14,15 +20,17 @@ function App() {
         <Header />
         <ScrollIntoView>
           <Switch>
-            <Route path="/user/:id">
+            <Route exact path="/user/:id">
               <User />
             </Route>
-            <Route path="/post/:id">
+            <Route exact path="/post/:id">
               <Post />
             </Route>
-            <Route path="/">
+            <Route exact path="/">
               <Posts />
             </Route>
+            <Route path="/404" component={NotFound} />
+            <Redirect to="/404" />
           </Switch>
         </ScrollIntoView>
       </Router>

@@ -10,16 +10,16 @@ const theme = {
     secondary: '#c0c',
     highlight: '#e0e',
     muted: '#e5e5e5',
-    muted2: '#ccd',
+    card: 'white',
     modes: {
       dark: {
         text: '#fff',
+        card: 'black',
         background: '#111517',
         primary: '#39b5bd',
         secondary: '#0cf',
         highlight: '#f0c',
         muted: '#223',
-        muted2: '#556',
       },
     },
   },
@@ -66,16 +66,11 @@ const theme = {
   },
   cards: {
     primary: {
-      padding: 2,
-      margin: 2,
+      padding: 3,
+      mb: 3,
       borderRadius: 4,
       boxShadow: '0 0 8px rgba(0, 0, 0, 0.125)',
-    },
-    compact: {
-      padding: 1,
-      borderRadius: 2,
-      border: '1px solid',
-      borderColor: 'muted',
+      backgroundColor: 'card',
     },
   },
   styles: {
@@ -89,7 +84,7 @@ const theme = {
       flexDirection: 'column',
     },
     container: {
-      px: [3, 5],
+      px: [3, 5, 6, 7],
     },
     a: {
       color: 'text',

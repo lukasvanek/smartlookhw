@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Card } from 'theme-ui';
+import { jsx, Card, Divider } from 'theme-ui';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -7,26 +7,14 @@ import { RootState, Dispatch } from '../features/store';
 import { commentsOfPostSelector } from '../features/comments/comments.selector';
 import Identity from '../components/Identity';
 import { Comment } from '../features/comments/comments.model';
+import CommentComponent from '../components/Comment';
+// @ts-ignore
+import Fade from 'react-reveal/Fade';
+import { capitalize } from '../utils';
 
 interface ParamTypes {
   id: string;
 }
-
-type CommentProps = {
-  comment: Comment;
-};
-
-const CommentComponent = ({ comment }: CommentProps) => {
-  return (
-    <Card>
-      {comment.body}
-      <br />
-      {comment.email}
-      <br />
-      {comment.name}
-    </Card>
-  );
-};
 
 const Post = () => {
   const { id } = useParams<ParamTypes>();
@@ -35,17 +23,30 @@ const Post = () => {
   const comments: Comment[] = useSelector(commentsOfPostSelector(id));
 
   useEffect(() => {
+    if (post.userId) {
+      dispatch.users.fetchById(post.userId);
+    }
+  }, [post]);
+
+  useEffect(() => {
     dispatch.posts.fetchById(id);
     dispatch.comments.fetchCommentsOfPost(id);
   }, []);
 
   return (
     <main sx={{ variant: 'styles.container', pt: 100 }}>
-      <h1>{post.title}</h1>
-      <p>{post.body}</p>
+      <h1>{capitalize(post.title)}</h1>
       <Identity userId={post.userId} />
+      <p>{capitalize(post.body)}.</p>
+
+      <Divider sx={{ my: 4 }} />
+
+      <h3>Comments ({comments.length})</h3>
+
       {comments.map((comment) => (
-        <CommentComponent comment={comment} key={`comment-${comment.id}`} />
+        <Fade key={`comment-${comment.id}`}>
+          <CommentComponent comment={comment} />
+        </Fade>
       ))}
     </main>
   );

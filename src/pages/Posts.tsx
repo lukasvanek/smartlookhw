@@ -6,6 +6,8 @@ import { Post } from '../features/posts/posts.model';
 import { RootState, Dispatch } from '../features/store';
 import { MapToList } from '../utils';
 import PostPreview from '../components/PostPreview';
+// @ts-ignore
+import Fade from 'react-reveal/Fade';
 
 const Posts = () => {
   const posts = useSelector((state: RootState) => state.posts);
@@ -18,7 +20,9 @@ const Posts = () => {
   return (
     <main sx={{ variant: 'styles.container', pt: 100 }}>
       {MapToList(posts).map((post: Post) => (
-        <PostPreview key={`post-${post.id}`} post={post} />
+        <Fade key={`post-${post.id}`}>
+          <PostPreview post={post} />
+        </Fade>
       ))}
     </main>
   );
