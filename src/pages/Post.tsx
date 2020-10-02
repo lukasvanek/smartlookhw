@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx, Card, Divider } from 'theme-ui';
+import { jsx, Divider } from 'theme-ui';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -26,12 +26,12 @@ const Post = () => {
     if (post.userId) {
       dispatch.users.fetchById(post.userId);
     }
-  }, [post]);
+  }, [post, dispatch.users]);
 
   useEffect(() => {
     dispatch.posts.fetchById(id);
     dispatch.comments.fetchCommentsOfPost(id);
-  }, []);
+  }, [dispatch.posts, dispatch.comments, id]);
 
   return (
     <main sx={{ variant: 'styles.container', pt: 100 }}>

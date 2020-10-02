@@ -36,7 +36,7 @@ const User = () => {
     dispatch.users.fetchById(id);
     // I would use endpoint for fetching posts of user only instead
     dispatch.posts.load();
-  }, []);
+  }, [dispatch.users, dispatch.posts, id]);
 
   let position = [49.209916, 16.592605] as any;
   if (user.address && user.address.geo) {

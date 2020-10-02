@@ -7,5 +7,8 @@ import { Post } from './posts.model';
 export const postsOfUserSelector = (id: User['id']) =>
   createSelector(
     (state: RootState) => state.posts,
-    (postsMap) => MapToList(postsMap).filter((post: Post) => post.userId == id)
+    (postsMap) =>
+      MapToList(postsMap).filter(
+        (post: Post) => Number(post.userId) === Number(id)
+      )
   );

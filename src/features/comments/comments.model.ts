@@ -1,7 +1,6 @@
 import { createModel } from '@rematch/core';
 import { getCommentsOfPost } from '../../api';
 import { RootModel } from '../root.model';
-import assoc from 'ramda/es/assoc';
 import { ListToMap } from '../../utils';
 import { Post } from '../posts/posts.model';
 

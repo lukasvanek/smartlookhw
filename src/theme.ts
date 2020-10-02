@@ -1,5 +1,5 @@
 // @ts-ignore
-import { darken, lighten, alpha } from '@theme-ui/color';
+import { darken, alpha } from '@theme-ui/color';
 
 const theme = {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],

@@ -15,7 +15,7 @@ const Posts = () => {
 
   useEffect(() => {
     dispatch.posts.load();
-  }, []);
+  }, [dispatch.posts]);
 
   return (
     <main sx={{ variant: 'styles.container', pt: 100 }}>

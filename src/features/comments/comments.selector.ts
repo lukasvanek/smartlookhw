@@ -8,5 +8,7 @@ export const commentsOfPostSelector = (id: Post['id']) =>
   createSelector(
     (state: RootState) => state.comments,
     (commentsMap) =>
-      MapToList(commentsMap).filter((comment: Comment) => comment.postId == id)
+      MapToList(commentsMap).filter(
+        (comment: Comment) => Number(comment.postId) === Number(id)
+      )
   );
