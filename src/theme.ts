@@ -71,11 +71,12 @@ const theme = {
       borderRadius: 4,
       boxShadow: '0 0 8px rgba(0, 0, 0, 0.125)',
       backgroundColor: 'card',
+      transition: 'background-color 0.3s ease-out',
     },
   },
   styles: {
     root: {
-      transition: 'background-color 0.4s ease-out',
+      transition: 'background-color 0.3s ease-out',
       fontFamily: 'body',
       lineHeight: 'body',
       fontWeight: 'body',

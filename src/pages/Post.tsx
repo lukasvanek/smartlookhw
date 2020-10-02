@@ -36,7 +36,9 @@ const Post = () => {
   return (
     <main sx={{ variant: 'styles.container', pt: 100 }}>
       <h1>{capitalize(post.title)}</h1>
+
       <Identity userId={post.userId} />
+
       <p>{capitalize(post.body)}.</p>
 
       <Divider sx={{ my: 4 }} />

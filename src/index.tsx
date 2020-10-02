@@ -8,13 +8,11 @@ import theme from './theme';
 import { store } from './features/store';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </ThemeProvider>
-  </React.StrictMode>,
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </ThemeProvider>,
   document.getElementById('root')
 );
 
