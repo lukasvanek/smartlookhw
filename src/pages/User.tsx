@@ -66,79 +66,92 @@ const User = () => {
           styles={{}}
           src={`https://tinyfac.es/data/avatars/${pics[Number(id)]}-200w.jpeg`}
         />
+
         <h1>{user.name}</h1>
 
-        <Flex
-          sx={{
-            flexWrap: 'wrap',
-            li: { listStyle: 'none' },
-            ul: {
-              paddingInlineStart: 0,
-            },
-            svg: {
-              verticalAlign: 'middle',
-              width: '1.5em',
-              height: '1.5em',
-              fill: alpha('text', 0.8),
-              mr: 2,
-            },
-          }}
-        >
-          {user.company && (
+        <Fade>
+          <Flex
+            sx={{
+              flexWrap: 'wrap',
+              ul: {
+                listStyle: 'none',
+                paddingInlineStart: 0,
+                m: 0,
+              },
+              li: {
+                mb: 3,
+              },
+              svg: {
+                verticalAlign: 'middle',
+                width: '1.5em',
+                height: '1.5em',
+                fill: alpha('text', 0.8),
+                mr: 2,
+              },
+              span: {
+                verticalAlign: 'middle',
+              },
+            }}
+          >
+            {user.company && (
+              <Box sx={{ minWidth: 220 }}>
+                <ul>
+                  <li>
+                    <MdBusiness />
+                    <span>{user.company.name}</span>
+                  </li>
+                  <li>
+                    <MdApps />
+                    <span>{user.company.catchPhrase}</span>
+                  </li>
+                  <li>
+                    <MdModeEdit />
+                    <span>{user.company.bs}</span>
+                  </li>
+                  <li>
+                    <MdLocationCity />
+                    <span>
+                      {user.address.street}, {user.address.city},{' '}
+                      {user.address.suite}
+                    </span>
+                  </li>
+                  <li>
+                    <MdMap />
+                    <span>{user.address.zipcode}</span>
+                  </li>
+                </ul>
+              </Box>
+            )}
+            <Box sx={{ mx: 'auto' }} />
             <Box sx={{ minWidth: 220 }}>
-              {' '}
-              <li>
-                <ul>
-                  <MdBusiness />
-                  {user.company.name}
-                </ul>
-                <ul>
-                  <MdApps />
-                  {user.company.catchPhrase}
-                </ul>
-                <ul>
-                  <MdModeEdit />
-                  {user.company.bs}
-                </ul>
-                <ul>
-                  <MdLocationCity />
-                  {user.address.street}, {user.address.city},{' '}
-                  {user.address.suite}
-                </ul>
-                <ul>
-                  <MdMap />
-                  {user.address.zipcode}
-                </ul>
-              </li>
+              <ul>
+                <li>
+                  <MdPhone />
+                  <span>{user.phone}</span>
+                </li>
+                <li>
+                  <MdEmail />
+                  <span>{user.email}</span>
+                </li>
+                <li>
+                  <MdWeb />
+                  <span>{user.website}</span>
+                </li>
+              </ul>
             </Box>
-          )}
-          <Box sx={{ mx: 'auto' }} />
-          <Box sx={{ minWidth: 220 }}>
-            <li>
-              <ul>
-                <MdPhone />
-                {user.phone}
-              </ul>
-              <ul>
-                <MdEmail />
-                {user.email}
-              </ul>
-              <ul>
-                <MdWeb />
-                {user.website}
-              </ul>
-            </li>
-          </Box>
-        </Flex>
+          </Flex>
+        </Fade>
 
         {user.address && (
-          <Map style={{ height: 300 }} center={position} zoom={1}>
-            <TileLayer
-              attribution='&amp;copy <a style="color: black" href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={position}></Marker>
-          </Map>
+          <Fade>
+            <Map style={{ height: 300 }} center={position} zoom={2}>
+              <TileLayer
+                attribution='&amp;copy <a style="color: black" href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={position}></Marker>
+            </Map>
+          </Fade>
         )}
 
         <Divider sx={{ my: 4 }} />
